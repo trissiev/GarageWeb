@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>garageWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>welcomepage.jsp</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>Login Servlet</servlet-name>
+    <servlet-class>garageWeb.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Login Servlet</servlet-name>
+    <url-pattern>/servlet/LoginServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Registreer Servlet</servlet-name>
+    <servlet-class>garageWeb.servlet.RegistreerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Registreer Servlet</servlet-name>
+    <url-pattern>/servlet/RegistreerServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>KlantAccount Servlet</servlet-name>
+    <servlet-class>garageWeb.secure.KlantAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>KlantAccount Servlet</servlet-name>
+    <url-pattern>/secure/KlantAccountServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>WijzigGegevens Servlet</servlet-name>
+    <servlet-class>garageWeb.secure.WijzigGegevensServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>WijzigGegevens Servlet</servlet-name>
+    <url-pattern>/secure/WijzigGegevensServlet.do</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <servlet-name>VerwijderAuto Servlet</servlet-name>
+    <servlet-class>garageWeb.secure.VerwijderAutoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>VerwijderAuto Servlet</servlet-name>
+    <url-pattern>/secure/VerwijderAutoServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>MonteurAccount Servlet</servlet-name>
+    <servlet-class>garageWeb.secureMonteur.MonteurAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MonteurAccount Servlet</servlet-name>
+    <url-pattern>/secureMonteur/MonteurAccountServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ParkeerBeheerAccount Servlet</servlet-name>
+    <servlet-class>garageWeb.secureParkeerBeheer.ParkeerBeheerAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ParkeerBeheerAccount Servlet</servlet-name>
+    <url-pattern>/secureParkeerBeheer/ParkeerBeheerAccountServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>BedrijfsleiderAccount Servlet</servlet-name>
+    <servlet-class>garageWeb.secureBedrijfsleider.BedrijfsleiderAccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BedrijfsleiderAccount Servlet</servlet-name>
+    <url-pattern>/secureBedrijfsleider/BedrijfsleiderAccountServlet.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>Logout Servlet</servlet-name>
+    <servlet-class>garageWeb.servlet.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout Servlet</servlet-name>
+    <url-pattern>/servlet/LogoutServlet.do</url-pattern>
+  </servlet-mapping>
+  <listener>
+    <listener-class>garageWeb.MyServletContextListener</listener-class>
+  </listener>
+  <filter>
+    <filter-name>IsLoggedInFilter</filter-name>
+    <filter-class>garageWeb.filter.IsLoggedInFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>IsLoggedInFilter</filter-name>
+    <url-pattern>/secure/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>MonteurLoggedInFilter</filter-name>
+    <filter-class>garageWeb.filter.MonteurLoggedInFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>MonteurLoggedInFilter</filter-name>
+    <url-pattern>/secureMonteur/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>BedrijfsleiderLoggedInFilter</filter-name>
+    <filter-class>garageWeb.filter.BedrijfsleiderLoggedInFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>BedrijfsleiderLoggedInFilter</filter-name>
+    <url-pattern>/secureBedrijfsleider/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  <filter>
+    <filter-name>ParkeerBeheerLoggedInFilter</filter-name>
+    <filter-class>garageWeb.filter.ParkeerBeheerLoggedInFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ParkeerBeheerLoggedInFilter</filter-name>
+    <url-pattern>/secureParkeerBeheer/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+</web-app>
