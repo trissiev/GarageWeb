@@ -24,12 +24,11 @@ public class RegistreerServlet extends HttpServlet {
 		req.setAttribute("naam", naam);
 
 		Garage garage = (Garage) req.getServletContext().getAttribute("Garage_Object");
-		System.out.println(garage.getNaam());
 		boolean taken = false;
 		RequestDispatcher rd = null;
 		if (naam.equals("") || pass.equals("") || username.equals("") || adres.equals("") || email.equals("")) {
 			req.setAttribute("msg", "Niet alle velden ingevuld");
-			rd = req.getRequestDispatcher("main/registreerpage.jsp");
+			rd = req.getRequestDispatcher("/main/registreerpage.jsp");
 		} else {
 			for (Klant k : garage.getKlanten()) {
 				if (k.getGebruikersnaam().equals(username)) {
@@ -51,12 +50,12 @@ public class RegistreerServlet extends HttpServlet {
 			}
 			if(taken){
 				req.setAttribute("msg", "Username already taken");
-				rd = req.getRequestDispatcher("main/registreerpage.jsp");
+				rd = req.getRequestDispatcher("/main/registreerpage.jsp");
 			}
 			if (!taken) {
 				Klant nieuweKlant = new Klant(naam, adres, email, username, pass);
 				garage.setKlant(nieuweKlant);
-				rd = req.getRequestDispatcher("main/welcomepage.jsp");
+				rd = req.getRequestDispatcher("/main/welcomepage.jsp");
 			}
 		}
 		rd.forward(req, resp);
