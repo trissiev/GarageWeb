@@ -19,7 +19,6 @@ public class VerwijderAutoServlet extends HttpServlet {
 			throws ServletException, IOException {
 		boolean verwijder = false;
 		String kenteken = req.getParameter("kenteken");
-		System.out.println(kenteken);
 		Klant nu = (Klant) req.getSession().getAttribute("user");
 		Auto aa = null;
 		for(Auto a : nu.getAutos()){
