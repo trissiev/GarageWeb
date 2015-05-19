@@ -3,6 +3,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Klant implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private String gebruikersnaam, wachtwoord, naam, adres, email;
 	
 	private ArrayList<Auto> autos = new ArrayList<Auto>();
@@ -63,5 +68,8 @@ public class Klant implements Serializable {
 
 	public void setWachtwoord(String wachtwoord) {
 		this.wachtwoord = wachtwoord;
+	}
+	public void verwijderAuto(Auto a){
+		autos.remove(a);
 	}
 }

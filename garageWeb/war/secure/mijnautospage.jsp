@@ -22,7 +22,7 @@
 			String s = a.getKenteken();
 			 %>
 			 <form action="/garageWeb/secure/VerwijderAutoServlet.do" method="post">
-				<input type="submit"  name="<%=s%>" value="verwijder" class="btn" id="custom"/>
+				<button type="submit"  name="kenteken" value="<%=s%>" class="btn" id="custom">verwijder</button>
 			</form>
 			 <br><%
 		}

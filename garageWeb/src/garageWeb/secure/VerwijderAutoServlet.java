@@ -17,14 +17,20 @@ import javax.servlet.http.HttpServletResponse;
 public class VerwijderAutoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
-		/*System.out.println(kenteken);
-		*/Klant nu = (Klant) req.getSession().getAttribute("user");/*
+		boolean verwijder = false;
+		String kenteken = req.getParameter("kenteken");
+		System.out.println(kenteken);
+		Klant nu = (Klant) req.getSession().getAttribute("user");
+		Auto aa = null;
 		for(Auto a : nu.getAutos()){
+			aa = a;
 			if(a.getKenteken().equals(kenteken)){
-				a = null;
-				
+				verwijder = true;		
 			}
-		}*/
+		}
+		if(verwijder){
+			nu.verwijderAuto(aa);
+		}
 		RequestDispatcher rd = null;
 		rd = req.getRequestDispatcher("/secure/mijnautospage.jsp");
 		req.getSession().setAttribute("user", nu);		
