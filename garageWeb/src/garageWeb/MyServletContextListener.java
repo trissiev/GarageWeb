@@ -17,7 +17,12 @@ import java.time.LocalDate;
 import javax.servlet.*;
 
 public class MyServletContextListener implements ServletContextListener {
+	private boolean saved = false;
+	
 	public void contextInitialized(ServletContextEvent sce) {
+		if(saved == false){
+			resave();
+		}
 		//resave();
 		
 		Garage garage;
@@ -47,6 +52,7 @@ public class MyServletContextListener implements ServletContextListener {
 	}
 	
 	public void resave() {
+		
 		 Garage garage = new Garage("ATD", "Nijenoord 1");
 		 
 		 Parkeerplaats p = new Parkeerplaats(56);
@@ -145,6 +151,7 @@ public class MyServletContextListener implements ServletContextListener {
  			ObjectOutputStream oos = new ObjectOutputStream(fos);
  			oos.writeObject(garage);
  			System.out.println("save successful");
+ 			saved = true;
  			oos.close();
  		} catch (IOException ioe) {
  			ioe.printStackTrace();
